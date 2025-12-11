@@ -1,0 +1,305 @@
+===========================================================
+        LLM BRAIN MAP 
+===========================================================
+
+INTRODUCTION
+------------
+Large Language Models (LLMs) convert user text into meaning,
+reason over it, and generate responses one token at a time.
+This manual explains the full pipeline using visuals,
+one‑liner definitions, examples, and analogies.
+
+===========================================================
+SECTION 1 — FULL PIPELINE (WITH DEFINITIONS + EXAMPLES)
+===========================================================
+
+User Input:
+"How does an LLM work?"
+
+-----------------------------------------------------------
+STEP 1 — TOKENIZATION
+-----------------------------------------------------------
+Definition: Breaks text into tokens.
+Example: "LLM" → [" L", "LM"]
+Analogy: Cutting a sentence into Lego pieces.
+
+Visual:
+[How] [ does] [ an] [ LLM] [ work] [?]
+
+-----------------------------------------------------------
+STEP 2 — EMBEDDINGS
+-----------------------------------------------------------
+Definition: Converts tokens into vectors representing meaning.
+Example: "LLM" → [0.12, -0.44, 0.88]
+Analogy: Assigning each Lego piece a unique color pattern.
+
+Visual:
+Token → Meaning Vector
+
+-----------------------------------------------------------
+STEP 3 — POSITIONAL ENCODING
+-----------------------------------------------------------
+Definition: Adds order so the model knows sequence.
+Example: "How" is 1st, "LLM" is 4th.
+Analogy: Page numbers in a book.
+
+Visual:
+Token Vector + Position Vector = Ordered Meaning Vector
+
+-----------------------------------------------------------
+STEP 4 — TRANSFORMER LAYERS (THE REASONING ENGINE)
+-----------------------------------------------------------
+Definition: Core engine that understands relationships.
+
+-----------------------------------------------------------
+4A — SELF-ATTENTION
+-----------------------------------------------------------
+One-liner: Determines relevance between tokens.
+Example: "LLM" attends to "work".
+Analogy: Highlighting important words while reading.
+
+Visual:
+"LLM" ←──────→ "work"
+"How" ←──────→ "does"
+
+-----------------------------------------------------------
+4B — MULTI-HEAD ATTENTION
+-----------------------------------------------------------
+One-liner: Looks at input from multiple perspectives.
+Example: One head tracks grammar, another tracks meaning.
+Analogy: A team of experts analyzing the same sentence.
+
+Visual:
++-------------------------------+
+| Multi-Head Attention          |
+|-------------------------------|
+| Head 1: Grammar               |
+| Head 2: Meaning               |
+| Head 3: Long-range links      |
+| Head 4: Question focus        |
+| Head 5: Topic detection       |
+| Head 6: Answer structure      |
++-------------------------------+
+
+-----------------------------------------------------------
+4C — FEED-FORWARD NETWORKS
+-----------------------------------------------------------
+One-liner: Refines meaning after attention.
+Example: Cleans up noisy signals.
+Analogy: Polishing a rough diamond.
+
+Visual:
+[Attention Output] → [Refinement Layer]
+
+-----------------------------------------------------------
+STEP 5 — FINAL HIDDEN STATE
+-----------------------------------------------------------
+Definition: Model’s internal understanding of your input.
+Example: A compressed meaning of your entire question.
+Analogy: A summary in the model’s mind.
+
+Visual:
+[Deep Meaning Vector]
+
+-----------------------------------------------------------
+STEP 6 — OUTPUT PROBABILITIES
+-----------------------------------------------------------
+Definition: Predicts likelihood of each next token.
+Example:
+"A large" → 74%
+"An"     → 5%
+Analogy: Choosing the most likely next word.
+
+Visual:
+Token → Probability Bar
+
+-----------------------------------------------------------
+STEP 7 — DECODING LOOP
+-----------------------------------------------------------
+Definition: Generates answer token-by-token.
+Example:
+"A" → "A large" → "A large language model..."
+Analogy: Writing a sentence one word at a time.
+
+Visual:
+Step 1: A
+Step 2: A large
+Step 3: A large language
+Step 4: A large language model
+
+===========================================================
+SECTION 2 — MULTI-HEAD ATTENTION (DETAILED VISUAL)
+===========================================================
+
+Definition: Multiple attention views for richer understanding.
+
+Visual:
++---------------------------------------------------------+
+|                    MULTI-HEAD ATTENTION                 |
++---------------------------------------------------------+
+| Head 1 → Grammar links        ("does" ↔ "work")         |
+| Head 2 → Semantic meaning     ("LLM" ↔ "model")         |
+| Head 3 → Long-range links     ("How" ↔ "work")          |
+| Head 4 → Question focus       (emphasizes "How")        |
+| Head 5 → Topic detection      (identifies "LLM")        |
+| Head 6 → Answer structure     (predicts explanation)    |
++---------------------------------------------------------+
+
+Analogy: A panel of experts each giving their perspective.
+
+===========================================================
+SECTION 3 — DECODING STRATEGIES (VISUAL + EXAMPLES)
+===========================================================
+
+Greedy Decoding
+Definition: Always pick highest probability.
+Example: Predictable, safe.
+Analogy: Always choosing the safest option.
+
+Top-k Sampling
+Definition: Pick from top k tokens.
+Example: k=5 → more variety.
+Analogy: Choosing from top 5 menu items.
+
+Top-p (Nucleus) Sampling
+Definition: Pick from tokens covering p% probability.
+Example: p=0.9 → dynamic flexibility.
+Analogy: Choose from items that make up 90% of popularity.
+
+Temperature
+Definition: Controls randomness.
+Example: High temp → creative.
+Analogy: Turning up the “creativity thermostat.”
+
+Visual:
++-------------------------------+
+| Decoding Strategy Selector    |
+|-------------------------------|
+| Greedy → Deterministic        |
+| Top-k → Controlled variety    |
+| Top-p → Dynamic variety       |
+| Temp → Creativity control     |
++-------------------------------+
+
+===========================================================
+SECTION 4 — COMPLETE PIPELINE (FINAL VISUAL)
+===========================================================
+
+[Input Text]
+   ↓
+[Tokenization — breaks text into tokens]
+   ↓
+[Embeddings — converts tokens to vectors]
+   ↓
+[Positional Encoding — adds order]
+   ↓
+[Self-Attention — determines relevance]
+   ↓
+[Multi-Head Attention — multiple perspectives]
+   ↓
+[Feed-Forward — refines meaning]
+   ↓
+[Final Hidden State — internal understanding]
+   ↓
+[Output Probabilities — predicts next token]
+   ↓
+[Decoding Loop — generates answer]
+   ↓
+[Final Output]
+
+===========================================================
+
+BRAIN-MAP
+
+"How does an LLM work?"
+        │
+        ▼
++------------------+
+|  Tokenization    |
+|  One-liner:      |
+|  Breaks text     |
+|  into tokens.    |
++------------------+
+Example: "LLM" → [" L", "LM"]
+Analogy: Cutting a sentence into Lego pieces.
+        │
+        ▼
++------------------+
+|   Embeddings     |
+|  One-liner:      |
+|  Turns tokens    |
+|  into vectors.   |
++------------------+
+Example: "LLM" → [0.12, -0.44, 0.88]
+Analogy: Assigning each Lego piece a unique color pattern.
+        │
+        ▼
++---------------------------+
+|   Positional Encoding     |
+|  One-liner: Adds order    |
+|  so model knows sequence. |
++---------------------------+
+Example: "How" is 1st, "LLM" is 4th.
+Analogy: Page numbers in a book.
+        │
+        ▼
++-------------------------------------------+
+|   Transformer Layers                      |
+|  One-liner: Core reasoning engine.        |
+|                                           |
+|  ┌─────────────────────────────────────┐  |
+|  │ Self-Attention                      │  |
+|  │ One-liner: Determines relevance.    │  |
+|  │ Example: "LLM" ↔ "work"             │  |
+|  │ Analogy: Highlighting important     │  |
+|  │ words while reading.                │  |
+|  └─────────────────────────────────────┘  |
+|                                           |
+|  ┌─────────────────────────────────────┐  |
+|  │ Multi-Head Attention                │  |
+|  │ One-liner: Looks at input from      │  |
+|  │ multiple perspectives.               │  |
+|  │ Example: One head tracks grammar,   │  |
+|  │ another tracks meaning.             │  |
+|  │ Analogy: A team of experts each     │  |
+|  │ analyzing the same sentence.        │  |
+|  └─────────────────────────────────────┘  |
+|                                           |
+|  ┌─────────────────────────────────────┐  |
+|  │ Feed-Forward Networks               │  |
+|  │ One-liner: Refines meaning.         │  |
+|  │ Example: Cleans up noisy signals.   │  |
+|  │ Analogy: Polishing a rough diamond. │  |
+|  └─────────────────────────────────────┘  |
++-------------------------------------------+
+        │
+        ▼
++---------------------------+
+| Final Hidden State       |
+| One-liner: Model’s       |
+| internal understanding.  |
++---------------------------+
+Example: A compressed meaning of your entire question.
+Analogy: A summary in the model’s mind.
+        │
+        ▼
++---------------------------+
+| Output Probabilities     |
+| One-liner: Predicts      |
+| next-token likelihood.   |
++---------------------------+
+Example: "A large" = 74% probability.
+Analogy: Choosing the most likely next word.
+        │
+        ▼
++---------------------------+
+| Decoding Loop            |
+| One-liner: Generates     |
+| answer token-by-token.   |
++---------------------------+
+Example: "A" → "A large" → "A large language model..."
+Analogy: Writing a sentence one word at a time.
+        │
+        ▼
+"A large language model..."
+
