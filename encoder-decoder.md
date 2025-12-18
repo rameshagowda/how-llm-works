@@ -85,6 +85,9 @@ Encoder‑only models (BERT)
 Optimized for understanding, not generation
 
 
+<img width="887" height="719" alt="image" src="https://github.com/user-attachments/assets/1b6e5bb5-c23b-4a81-8c93-41793683e057" />
 
+
+https://learn.microsoft.com/en-ca/training/modules/explore-foundation-models-in-model-catalog/4-transformers
 
 
